@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Balance from "../components/balance";
 import TotalIncomes from "../components/total-incomes";
@@ -6,6 +9,12 @@ import Form from "../components/form";
 import ExpenseHistory from "../components/expense-history";
 
 const Home = () => {
+  const [expenses, setExpenses] = useState([]);
+
+  const addExpense = (expense) => {
+    setExpenses([...expenses, expense]);
+  };
+
   return (
     <main className="flex min-h-screen w-full items-center justify-center bg-highlight">
       <div className="flex gap-5 rounded-3xl bg-primary p-5">
@@ -31,12 +40,12 @@ const Home = () => {
           </div>
 
           <div>
-            <Form />
+            <Form addExpense={addExpense} />
           </div>
         </section>
 
         <section className="w-80 rounded-3xl bg-secondary">
-          <ExpenseHistory />
+          <ExpenseHistory expenses={expenses} />
         </section>
       </div>
     </main>
