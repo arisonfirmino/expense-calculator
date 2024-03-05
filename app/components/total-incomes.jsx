@@ -1,6 +1,6 @@
 import { ArrowUpIcon } from "lucide-react";
 
-const TotalIncomes = () => {
+const TotalIncomes = ({ totalIncome }) => {
   return (
     <div className="flex items-center gap-2.5 rounded-3xl bg-secondary p-5">
       <div className="flex items-center justify-center rounded-full bg-green-300 bg-opacity-50 p-2.5 text-green-400">
@@ -9,7 +9,7 @@ const TotalIncomes = () => {
 
       <div className="flex flex-col">
         <p className="text-sm text-gray-400">Ganhos Totais</p>
-        <p className="text-xl font-medium">R$ 7.736,14</p>
+        <p className="text-xl font-medium">R$ {totalIncome}</p>
       </div>
     </div>
   );

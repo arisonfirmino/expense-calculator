@@ -10,9 +10,30 @@ import ExpenseHistory from "../components/expense-history";
 
 const Home = () => {
   const [expenses, setExpenses] = useState([]);
+  const [totalIncome, setTotalIncome] = useState(0);
+  const [totalExpense, setTotalExpense] = useState(0);
+  const [balance, setBalance] = useState(0);
 
   const addExpense = (expense) => {
     setExpenses([...expenses, expense]);
+    updateBalance(expense);
+    updateTotals(expense);
+  };
+
+  const updateBalance = (expense) => {
+    if (expense.type === "expense") {
+      setBalance(balance - expense.value);
+    } else {
+      setBalance(balance + expense.value);
+    }
+  };
+
+  const updateTotals = (expense) => {
+    if (expense.type === "expense") {
+      setTotalExpense(totalExpense + expense.value);
+    } else {
+      setTotalIncome(totalIncome + expense.value);
+    }
   };
 
   return (
@@ -32,11 +53,11 @@ const Home = () => {
             </h1>
           </div>
 
-          <Balance />
+          <Balance balance={balance} />
 
           <div className="flex gap-5">
-            <TotalIncomes />
-            <TotalExpenses />
+            <TotalIncomes totalIncome={totalIncome} />
+            <TotalExpenses totalExpense={totalExpense} />
           </div>
 
           <div>

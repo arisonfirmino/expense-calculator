@@ -1,6 +1,6 @@
 import { ArrowDownIcon } from "lucide-react";
 
-const TotalExpenses = () => {
+const TotalExpenses = ({ totalExpense }) => {
   return (
     <div className="flex items-center gap-2.5 rounded-3xl bg-secondary p-5">
       <div className="flex items-center justify-center rounded-full bg-red-300 bg-opacity-50 p-2.5 text-red-400">
@@ -9,7 +9,7 @@ const TotalExpenses = () => {
 
       <div className="flex flex-col">
         <p className="text-sm text-gray-400">Gastos Totais</p>
-        <p className="text-xl font-medium">R$ 7.736,14</p>
+        <p className="text-xl font-medium">R$ {totalExpense}</p>
       </div>
     </div>
   );
