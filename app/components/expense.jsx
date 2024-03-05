@@ -1,6 +1,10 @@
 import { ArrowDownIcon, ArrowUpIcon, Trash2Icon } from "lucide-react";
 
-const Expense = ({ expense }) => {
+const Expense = ({ expense, removeExpense }) => {
+  const handleDelete = () => {
+    removeExpense(expense.id, expense);
+  };
+
   return (
     <div className="relative flex items-center gap-2.5 rounded-lg bg-gray-200 p-2.5">
       {expense.type === "income" && (
@@ -20,7 +24,10 @@ const Expense = ({ expense }) => {
         <p>R$ {expense.value}</p>
       </div>
 
-      <button className="absolute right-0 mr-2.5 text-red-600">
+      <button
+        onClick={handleDelete}
+        className="absolute right-0 mr-2.5 text-red-600"
+      >
         <Trash2Icon size={20} />
       </button>
     </div>

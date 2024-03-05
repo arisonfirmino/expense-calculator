@@ -36,6 +36,18 @@ const Home = () => {
     }
   };
 
+  const removeExpense = (id, expense) => {
+    setExpenses(expenses.filter((expense) => expense.id !== id));
+
+    if (expense.type === "expense") {
+      setBalance(balance + expense.value);
+      setTotalExpense(totalExpense - expense.value);
+    } else {
+      setBalance(balance - expense.value);
+      setTotalIncome(totalIncome - expense.value);
+    }
+  };
+
   return (
     <main className="flex min-h-screen w-full items-center justify-center bg-highlight">
       <div className="flex gap-5 rounded-3xl bg-primary p-5">
@@ -66,7 +78,7 @@ const Home = () => {
         </section>
 
         <section className="w-80 rounded-3xl bg-secondary">
-          <ExpenseHistory expenses={expenses} />
+          <ExpenseHistory expenses={expenses} removeExpense={removeExpense} />
         </section>
       </div>
     </main>
