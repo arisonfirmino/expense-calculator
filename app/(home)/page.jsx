@@ -3,11 +3,12 @@ import Balance from "../components/balance";
 import TotalIncomes from "../components/total-incomes";
 import TotalExpenses from "../components/total-expenses";
 import Form from "../components/form";
+import ExpenseHistory from "../components/expense-history";
 
 const Home = () => {
   return (
     <main className="flex min-h-screen w-full items-center justify-center bg-highlight">
-      <div className="rounded-3xl bg-primary p-5">
+      <div className="flex gap-5 rounded-3xl bg-primary p-5">
         <section className="flex flex-col gap-5">
           <div className="flex items-center justify-center gap-2.5">
             <Image
@@ -32,6 +33,10 @@ const Home = () => {
           <div>
             <Form />
           </div>
+        </section>
+
+        <section className="w-80 rounded-3xl bg-secondary">
+          <ExpenseHistory />
         </section>
       </div>
     </main>
