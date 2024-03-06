@@ -7,7 +7,7 @@ const TotalExpenses = ({ totalExpense }) => {
   });
 
   return (
-    <div className="flex items-center gap-2.5 rounded-3xl bg-secondary p-5">
+    <div className="flex w-full items-center gap-2.5 rounded-3xl bg-secondary p-5 xl:w-auto">
       <div className="flex items-center justify-center rounded-full bg-red-300 bg-opacity-50 p-2.5 text-red-400">
         <ArrowDownIcon size={20} />
       </div>

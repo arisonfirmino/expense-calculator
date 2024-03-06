@@ -52,9 +52,9 @@ const Home = () => {
   };
 
   return (
-    <main className="flex min-h-screen w-full items-center justify-center bg-highlight">
-      <div className="flex gap-5 rounded-3xl bg-primary p-5">
-        <section className="flex flex-col gap-5">
+    <main className="flex min-h-screen w-full flex-col items-center justify-center bg-highlight">
+      <div className="flex min-h-screen w-full flex-col gap-5 bg-primary p-5 xl:min-h-0 xl:w-auto xl:flex-row xl:rounded-3xl">
+        <section className="flex w-full flex-col gap-5 xl:w-auto">
           <div className="flex items-center justify-center gap-2.5">
             <Image
               src="/logo.jpg"
@@ -70,7 +70,7 @@ const Home = () => {
 
           <Balance balance={balance} />
 
-          <div className="flex gap-5">
+          <div className="flex flex-col gap-5 md:flex-row">
             <TotalIncomes totalIncome={totalIncome} />
             <TotalExpenses totalExpense={totalExpense} />
           </div>
@@ -80,7 +80,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="w-80 rounded-3xl bg-secondary">
+        <section className="w-full rounded-3xl bg-secondary xl:w-80">
           <ExpenseHistory expenses={expenses} removeExpense={removeExpense} />
         </section>
       </div>

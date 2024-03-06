@@ -13,3 +13,13 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b9ab0;
+  border-radius: 2px;
+}
