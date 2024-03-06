@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Expense Calculator
 
-## Getting Started
+Expense Calculator é uma aplicação simples para o cálculo e gerenciamento de despesas, construída com Next.js.
 
-First, run the development server:
+Os usuários podem adicionar novas despesas ou ganhos financeiros, visualizar o saldo total, ganhos totais e despesas totais, além de ter acesso ao histórico de despesas para acompanhar suas transações.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![Project Preview](https://cdn.dribbble.com/userupload/13428199/file/original-e41199d674fafd027e4d86bdf48469f5.png?resize=1200x780)
+
+## Tecnologias Utilizadas
+
+![Next JS](https://img.shields.io/badge/-NEXT.JS-21222c?logo=nextdotjs&logoColor=000000&style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/-JAVASCRIPT-21222c?logo=javascript&logoColor=F7DF1E&style=for-the-badge)
+![Lucide Icons](https://img.shields.io/badge/-LUCIDE%20ICONS-21222c?style=for-the-badge)
+
+## Como Visualizar
+
+Você pode visualizar este projeto online clicando [aqui](https://expense-calculator-topaz.vercel.app/) ou clonando este repositório e executando o projeto em seu navegador. Para executar o projeto localmente, siga estas etapas:
+
+1. Clone este repositório usando o comando:
+
+```
+git clone https://github.com/arisonfirmino/expense-calculator.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navegue até o diretório do projeto.
+3. Instale as dependências com o comando:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Inicie o servidor local com o comando:
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+5. Abra seu navegador e acesse [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Componentes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Balance
 
-## Deploy on Vercel
+O componente de saldo exibe o saldo total.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### TotalIncomes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+O componente de ganhos totais exibe a soma de todos os ganhos com um ícone de seta para cima.
+
+### TotalExpenses
+
+O componente de despesas totais exibe a soma de todas as despesas com um ícone de seta para baixo.
+
+### Form
+
+O componente de formulário permite aos usuários adicionar uma nova despesa ou ganho financeiro.
+
+### ExpenseHistory
+
+O componente de histórico de despesas exibe todas as despesas registradas, permitindo aos usuários remover uma despesa específica.
+
+### Expense
+
+O componente de despesa exibe uma única despesa na lista, permitindo aos usuários excluir a despesa.
+
+## Contribuição
+
+Contribuições são bem-vindas! Se você quiser melhorar este projeto, sinta-se à vontade para enviar um pull request.
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
