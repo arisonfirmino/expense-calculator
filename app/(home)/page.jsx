@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Balance from "../components/balance";
 import TotalIncomes from "../components/total-incomes";
@@ -14,38 +14,41 @@ const Home = () => {
   const [totalExpense, setTotalExpense] = useState(0);
   const [balance, setBalance] = useState(0);
 
+  useEffect(() => {
+    const savedExpenses = JSON.parse(localStorage.getItem("expenses"));
+    if (savedExpenses) {
+      setExpenses(savedExpenses);
+      calculateTotals(savedExpenses);
+    }
+  }, []);
+
+  const calculateTotals = (expenses) => {
+    let income = 0;
+    let expense = 0;
+    expenses.forEach((expenseItem) => {
+      if (expenseItem.type === "expense") {
+        expense += expenseItem.value;
+      } else {
+        income += expenseItem.value;
+      }
+    });
+    setTotalIncome(income);
+    setTotalExpense(expense);
+    setBalance(income - expense);
+  };
+
   const addExpense = (expense) => {
-    setExpenses([...expenses, expense]);
-    updateBalance(expense);
-    updateTotals(expense);
+    const updatedExpenses = [...expenses, expense];
+    setExpenses(updatedExpenses);
+    calculateTotals(updatedExpenses);
+    localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
   };
 
-  const updateBalance = (expense) => {
-    if (expense.type === "expense") {
-      setBalance(balance - expense.value);
-    } else {
-      setBalance(balance + expense.value);
-    }
-  };
-
-  const updateTotals = (expense) => {
-    if (expense.type === "expense") {
-      setTotalExpense(totalExpense + expense.value);
-    } else {
-      setTotalIncome(totalIncome + expense.value);
-    }
-  };
-
-  const removeExpense = (id, expense) => {
-    setExpenses(expenses.filter((expense) => expense.id !== id));
-
-    if (expense.type === "expense") {
-      setBalance(balance + expense.value);
-      setTotalExpense(totalExpense - expense.value);
-    } else {
-      setBalance(balance - expense.value);
-      setTotalIncome(totalIncome - expense.value);
-    }
+  const removeExpense = (id) => {
+    const updatedExpenses = expenses.filter((item) => item.id !== id);
+    setExpenses(updatedExpenses);
+    calculateTotals(updatedExpenses);
+    localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
   };
 
   return (
