@@ -5,6 +5,11 @@ const Expense = ({ expense, removeExpense }) => {
     removeExpense(expense.id, expense);
   };
 
+  const formattedExpenseValue = expense.value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
   return (
     <div className="relative flex items-center gap-2.5 rounded-lg bg-gray-200 p-2.5">
       {expense.type === "income" && (
@@ -21,7 +26,7 @@ const Expense = ({ expense, removeExpense }) => {
 
       <div>
         <p className="text-xs capitalize text-gray-400">{expense.name}</p>
-        <p>R$ {expense.value}</p>
+        <p>{formattedExpenseValue}</p>
       </div>
 
       <button
