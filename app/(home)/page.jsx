@@ -22,6 +22,19 @@ const Home = () => {
       const parsedExpenses = JSON.parse(storedExpenses);
       setExpenses(parsedExpenses);
       setLastExpense(parsedExpenses[parsedExpenses.length - 1]);
+
+      let totalIncome = 0;
+      let totalExpense = 0;
+      parsedExpenses.forEach((expense) => {
+        if (expense.type === "income") {
+          totalIncome += expense.value;
+        } else if (expense.type === "expense") {
+          totalExpense += expense.value;
+        }
+      });
+      setTotalIncomes(totalIncome);
+      setTotalExpenses(totalExpense);
+      setBalance(totalIncome - totalExpense);
     }
   }, []);
 
