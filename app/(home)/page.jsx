@@ -10,31 +10,11 @@ import Form from "../components/form";
 import Expense from "../components/expense";
 
 const Home = () => {
-  const [balance, setBalance] = useState(() => {
-    const storedBalance = localStorage.getItem("balance");
-    return storedBalance ? parseFloat(storedBalance) : 0;
-  });
-  const [totalIncomes, setTotalIncomes] = useState(() => {
-    const storedTotalIncomes = localStorage.getItem("totalIncomes");
-    return storedTotalIncomes ? parseFloat(storedTotalIncomes) : 0;
-  });
-  const [totalExpenses, setTotalExpenses] = useState(() => {
-    const storedTotalExpenses = localStorage.getItem("totalExpenses");
-    return storedTotalExpenses ? parseFloat(storedTotalExpenses) : 0;
-  });
-  const [expenses, setExpenses] = useState(() => {
-    const storedExpenses = localStorage.getItem("expenses");
-    return storedExpenses ? JSON.parse(storedExpenses) : [];
-  });
-  const [lastExpense, setLastExpense] = useState(() => {
-    const storedExpenses = localStorage.getItem("expenses");
-    if (storedExpenses) {
-      const parsedExpenses = JSON.parse(storedExpenses);
-      return parsedExpenses[parsedExpenses.length - 1];
-    } else {
-      return null;
-    }
-  });
+  const [balance, setBalance] = useState(0);
+  const [totalIncomes, setTotalIncomes] = useState(0);
+  const [totalExpenses, setTotalExpenses] = useState(0);
+  const [expenses, setExpenses] = useState([]);
+  const [lastExpense, setLastExpense] = useState(null);
 
   useEffect(() => {
     const storedExpenses = localStorage.getItem("expenses");
