@@ -46,6 +46,24 @@ const Home = () => {
     setLastExpense(newExpense);
   };
 
+  const deleteExpense = (id, expenseValue, expenseType) => {
+    if (lastExpense && lastExpense.id === id) {
+      const index = expenses.findIndex((expense) => expense.id === id);
+      const previousExpense = index > 0 ? expenses[index - 1] : null;
+      setLastExpense(previousExpense);
+    }
+
+    setExpenses(expenses.filter((expense) => expense.id !== id));
+
+    if (expenseType === "income") {
+      setBalance(balance - expenseValue);
+      setTotalIncomes(totalIncomes - expenseValue);
+    } else if (expenseType === "expense") {
+      setBalance(balance + expenseValue);
+      setTotalExpenses(totalExpenses - expenseValue);
+    }
+  };
+
   return (
     <Container>
       <section className="flex min-h-full w-full flex-col items-center gap-5 rounded-3xl bg-black p-5">
@@ -74,6 +92,9 @@ const Home = () => {
                 type={expense.type}
                 name={expense.name}
                 value={expense.value}
+                deleteExpense={() =>
+                  deleteExpense(expense.id, expense.value, expense.type)
+                }
               />
             ))}
         </div>
