@@ -92,7 +92,7 @@ const Home = () => {
         <Form addExpense={addExpense} />
       </section>
 
-      <section className="flex min-h-full w-full flex-col gap-5 rounded-3xl bg-black p-5 xl:max-w-[420px]">
+      <section className="flex min-h-full w-full flex-col gap-5 rounded-3xl bg-black p-5 xl:max-w-[420px] xl:overflow-auto [&::-webkit-scrollbar]:hidden">
         <h3 className="font-medium uppercase">Histórico de despesas</h3>
 
         <div className="flex flex-col gap-2.5">
