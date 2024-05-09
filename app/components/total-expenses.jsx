@@ -9,7 +9,10 @@ const TotalExpenses = ({ totalExpenses }) => {
 
       <div className="flex flex-col">
         <h3 className="text-sm opacity-50">Gastos Totais</h3>
-        <p className="text-2xl font-medium">R$ {totalExpenses}</p>
+        <p className="text-2xl font-medium">
+          R${" "}
+          {totalExpenses.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+        </p>
       </div>
     </div>
   );

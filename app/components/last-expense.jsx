@@ -9,7 +9,12 @@ const LastExpense = ({ lastExpense }) => {
 
       <div className="flex flex-col">
         <h3 className="text-xs opacity-50">{lastExpense.name}</h3>
-        <p className="text-base">R$ {lastExpense.value}</p>
+        <p className="text-base">
+          R${" "}
+          {lastExpense.value.toLocaleString("pt-BR", {
+            minimumFractionDigits: 2,
+          })}
+        </p>
       </div>
     </div>
   );

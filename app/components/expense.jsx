@@ -10,7 +10,9 @@ const Expense = ({ type, name, value, deleteExpense }) => {
 
         <div>
           <h3 className="text-xs capitalize opacity-50">{name}</h3>
-          <p className="text-base">R$ {value}</p>
+          <p className="text-base">
+            R$ {value.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+          </p>
         </div>
       </div>
 
