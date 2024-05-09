@@ -23,7 +23,7 @@ const Form = ({ addExpense }) => {
   });
 
   const onSubmit = (data) => {
-    data.value = parseFloat(data.value);
+    data.value = parseFloat(data.value.replace(",", "."));
     addExpense(data);
     reset();
   };
