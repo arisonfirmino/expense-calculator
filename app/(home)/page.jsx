@@ -23,11 +23,29 @@ const Home = () => {
       setExpenses(parsedExpenses);
       setLastExpense(parsedExpenses[parsedExpenses.length - 1]);
     }
+
+    const storedBalance = localStorage.getItem("balance");
+    if (storedBalance) {
+      setBalance(parseFloat(storedBalance));
+    }
+
+    const storedTotalIncomes = localStorage.getItem("totalIncomes");
+    if (storedTotalIncomes) {
+      setTotalIncomes(parseFloat(storedTotalIncomes));
+    }
+
+    const storedTotalExpenses = localStorage.getItem("totalExpenses");
+    if (storedTotalExpenses) {
+      setTotalExpenses(parseFloat(storedTotalExpenses));
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
-  }, [expenses]);
+    localStorage.setItem("balance", balance);
+    localStorage.setItem("totalIncomes", totalIncomes);
+    localStorage.setItem("totalExpenses", totalExpenses);
+  }, [expenses, balance, totalIncomes, totalExpenses]);
 
   const addExpense = (newExpense) => {
     newExpense.id = uuidv4();
